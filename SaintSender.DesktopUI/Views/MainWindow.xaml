@@ -43,18 +43,17 @@
                 Click="Login_Button_Click" />
         </Grid>
         <Grid x:Name="ContentGrid" Margin="0,0,-0.4,0" Visibility="Collapsed">
-            <TextBlock Text="Succesful log in as:"></TextBlock>
-            <TextBlock Text="{Binding UserName}"
-                   HorizontalAlignment="Left"
-                   FontSize="28"
-                   TextWrapping="Wrap"
-                   VerticalAlignment="Top" />
-            <TextBlock Text="{Binding Password}"
-                   HorizontalAlignment="Left"
-                   FontSize="28"
-                   TextWrapping="Wrap"
-                   VerticalAlignment="Top" />
-            <Button Content="Login"
+            <ListView ItemsSource="{Binding Path=MailList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="WHU" DisplayMemberBinding="{Binding Path=MessageID}">
+                        </GridViewColumn>
+                        <GridViewColumn Header="WAT" DisplayMemberBinding="{Binding Path=Subject}">
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>                
+            </ListView>
+            <Button Content="Logout"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"

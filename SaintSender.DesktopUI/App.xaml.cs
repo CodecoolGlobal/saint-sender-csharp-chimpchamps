@@ -13,14 +13,14 @@ namespace SaintSender.DesktopUI
     /// </summary>
     public partial class App : Application
     {
-        public void SetUp()
-        {
-            SaintSender.Core.Models.EmailConnection.SetUp();
-        }
+        //public void SetUp()
+        //{
+        //    SaintSender.Core.Models.EmailConnection.SetUp();
+        //}
 
-        public void ListEmails()
-        {
-            SaintSender.Core.Models.Inbox.ListMails();
-        }
+        //public void ListEmails()
+        //{
+        //    SaintSender.Core.Models.Inbox.ListMails();
+        //}
     }
 }

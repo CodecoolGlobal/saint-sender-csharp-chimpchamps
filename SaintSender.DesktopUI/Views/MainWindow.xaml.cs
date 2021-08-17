@@ -26,8 +26,7 @@ namespace SaintSender.DesktopUI
                 LoginStateMessage.Visibility = Visibility.Collapsed;
                 LoginGrid.Visibility = Visibility.Collapsed;
                 ContentGrid.Visibility = Visibility.Visible;
-                SaintSender.Core.Models.Inbox.ListMails();
-
+                //Core.Models.Inbox.ListMails();
             } else
             {
                 LoginStateMessage.Visibility = Visibility.Visible;

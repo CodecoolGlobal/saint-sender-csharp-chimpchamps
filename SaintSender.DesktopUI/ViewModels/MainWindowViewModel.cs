@@ -1,5 +1,7 @@
-﻿using SaintSender.Core.Interfaces;
+﻿using AE.Net.Mail;
+using SaintSender.Core.Interfaces;
 using SaintSender.Core.Services;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -14,8 +16,7 @@ namespace SaintSender.DesktopUI.ViewModels
         private string _userName;
         private string _password;
         private string _body;
-      
-       
+        private ObservableCollection<MailMessage> _mails;
 
         /// <summary>
         /// Whenever a property value changed the subscribed event handler is called.
@@ -52,6 +53,13 @@ namespace SaintSender.DesktopUI.ViewModels
             }
         }
 
+        public ObservableCollection<MailMessage> MailList
+        {
+            get { return _mails; }
+            set { _mails = value; }
+        }
+
+
 
         public MainWindowViewModel()
         {
@@ -65,6 +73,7 @@ namespace SaintSender.DesktopUI.ViewModels
         /// </summary>
         public bool Login()
         {
+            MailList = Core.Models.Inbox.ListMails();
             return Core.Models.EmailConnection.SetUp(this.UserName, this.Password, this.Body); 
         }
 

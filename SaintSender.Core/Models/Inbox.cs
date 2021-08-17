@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ namespace SaintSender.Core.Models
         static ImapClient IC;
         static string Username = "charly.lombardy@gmail.com";
         static string Password = "bkhscuykgdupwiuh";
-        List<string> Emails = new List<string>();
+        public static ObservableCollection<MailMessage> MailList = new ObservableCollection<MailMessage>();
 
-        public static void ListMails()
+        public static ObservableCollection<MailMessage> ListMails()
         {
 
             IC = new ImapClient("imap.gmail.com", Username, Password, AuthMethods.Login, 993, true);
@@ -22,12 +23,14 @@ namespace SaintSender.Core.Models
             //var Email = IC.GetMessage(IC.GetMessageCount() - 1);
             var Emails = IC.GetMessages(IC.GetMessageCount() -5, IC.GetMessageCount(), false).ToList();
             Emails.Reverse();
+                MailList.Clear();
             foreach (var Email in Emails)
             {
-                Console.WriteLine("Your email: {0}\n", Email.Body); ;
+                MailList.Add(Email);
             }
             //IC.DeleteMessage(Email);
             //Console.ReadLine();
+            return MailList;
         }
     }
 }
