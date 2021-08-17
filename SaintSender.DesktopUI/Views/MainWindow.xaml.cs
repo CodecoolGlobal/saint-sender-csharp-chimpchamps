@@ -26,6 +26,8 @@ namespace SaintSender.DesktopUI
                 LoginStateMessage.Visibility = Visibility.Collapsed;
                 LoginGrid.Visibility = Visibility.Collapsed;
                 ContentGrid.Visibility = Visibility.Visible;
+                SaintSender.Core.Models.Inbox.ListMails();
+
             } else
             {
                 LoginStateMessage.Visibility = Visibility.Visible;
@@ -34,8 +36,10 @@ namespace SaintSender.DesktopUI
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)
         {
+
             LoginGrid.Visibility = Visibility.Visible;
             ContentGrid.Visibility = Visibility.Collapsed;
+
         }
     }
 }

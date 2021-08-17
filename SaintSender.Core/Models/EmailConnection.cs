@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using AE.Net.Mail;
 
 namespace SaintSender.Core.Models
 {
@@ -32,6 +33,7 @@ namespace SaintSender.Core.Models
                     //msgObj.Subject = Subject;
                     //msgObj.Body = Body;
                     //client.Send(msgObj);
+
                 }
             }
             catch
