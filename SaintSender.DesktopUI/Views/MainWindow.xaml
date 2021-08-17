@@ -3,31 +3,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SaintSender.DesktopUI"
+        xmlns:local="clr-namespace:SaintSender.DesktopUI" xmlns:viewmodels="clr-namespace:SaintSender.DesktopUI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="SainSender"
+        Title="SaintSender"
         Height="450"
         Width="800">
-    <Grid>
-        <TextBox Text="{Binding Name}"
-                 ToolTip="Write a name here a click the Greet button"
+    <StackPanel>
+        <TextBox x:Name="LoginStateMessage" Visibility="Collapsed" Text="Invalid e-mail address/password"/>
+        <Grid x:Name="LoginGrid">
+            <TextBox Text="{Binding UserName}"
+                 ToolTip="Please enter your GMAIL e-mail adress!"
                  HorizontalAlignment="Left"
                  Height="23"
                  Margin="10,10,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="120" />
-        <Button Content="Greet"
+            <TextBox Text="{Binding Password}"
+                 ToolTip="Enter your password!"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="10,45,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="120" />
+            <TextBox Text="{Binding Body}"
+                 ToolTip="Enter body of e-mail"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="10,80,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="120" />
+            <Button Content="Login"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
                 Margin="140,13,0,0"
-                Click="GreetBtn_Click" />
-        <TextBlock Text="{Binding Greeting}"
+                Click="Login_Button_Click" />
+        </Grid>
+        <Grid x:Name="ContentGrid" Margin="0,0,-0.4,0" Visibility="Collapsed">
+            <TextBlock Text="Succesful log in as:"></TextBlock>
+            <TextBlock Text="{Binding UserName}"
                    HorizontalAlignment="Left"
-                   Margin="10,45,0,0"
                    FontSize="28"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top" />
-    </Grid>
+            <TextBlock Text="{Binding Password}"
+                   HorizontalAlignment="Left"
+                   FontSize="28"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top" />
+            <Button Content="Login"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="75"
+                Margin="140,13,0,0"
+                Click="Logout_Button_Click" />
+        </Grid>
+    </StackPanel>
 </Window>

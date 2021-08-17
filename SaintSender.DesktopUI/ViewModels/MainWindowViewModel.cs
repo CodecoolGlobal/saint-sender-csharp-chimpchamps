@@ -1,6 +1,7 @@
 ﻿using SaintSender.Core.Interfaces;
 using SaintSender.Core.Services;
 using System.ComponentModel;
+using System.Windows;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
@@ -10,53 +11,63 @@ namespace SaintSender.DesktopUI.ViewModels
     /// </summary>
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private string _name;
-        private string _greeting;
-        private readonly IGreetService _greetService;
+        private string _userName;
+        private string _password;
+        private string _body;
+      
+       
 
         /// <summary>
         /// Whenever a property value changed the subscribed event handler is called.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        /// Gets or sets value of Greeting.
-        /// </summary>
-        public string Greeting
+      
+        public string UserName
         {
-            get { return _greeting; }
+            get { return _userName; }
             set
             {
-                _greeting = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Greeting)));
+                _userName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(UserName)));
+            }
+        }
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Password)));
             }
         }
 
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        public string Name
+        public string Body
         {
-            get => _name;
+            get { return _body; }
             set
             {
-                _name = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                _body = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Body)));
             }
         }
+
 
         public MainWindowViewModel()
         {
-            Name = string.Empty;
-            _greetService = new GreetService();
+            UserName = string.Empty;
+            Password = string.Empty;
+            Body = string.Empty;
         }
 
         /// <summary>
         /// Call a vendor service and apply its value into <see cref="Greeting"/> property.
         /// </summary>
-        public void Greet()
+        public bool Login()
         {
-            Greeting = _greetService.Greet(Name);
+            return Core.Models.EmailConnection.SetUp(this.UserName, this.Password, this.Body); 
         }
+
+
     }
 }
