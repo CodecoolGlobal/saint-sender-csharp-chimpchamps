@@ -13,6 +13,7 @@ namespace SaintSender.DesktopUI.ViewModels
     {
         private string _userName;
         private string _password;
+        private string _body;
       
        
 
@@ -40,12 +41,23 @@ namespace SaintSender.DesktopUI.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Password)));
             }
         }
-        
+
+        public string Body
+        {
+            get { return _body; }
+            set
+            {
+                _body = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Body)));
+            }
+        }
+
 
         public MainWindowViewModel()
         {
             UserName = string.Empty;
             Password = string.Empty;
+            Body = string.Empty;
         }
 
         /// <summary>
@@ -53,7 +65,7 @@ namespace SaintSender.DesktopUI.ViewModels
         /// </summary>
         public void Login()
         {
-            Core.Models.EmailConnection.SetUp(this.UserName, this.Password);
+            Core.Models.EmailConnection.SetUp(this.UserName, this.Password, this.Body);
       
 
             

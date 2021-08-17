@@ -13,9 +13,9 @@ namespace SaintSender.Core.Models
         //static string UserName = "charly.lombardy@gmail.com";
         //static string Password = "bkhscuykgdupwiuh";
         static string Subject = "Test mail";
-        static string Body = "Login teszt";
+        //static string Body = "Login teszt";
         static string Destination = "charly.lombardy@gmail.com";
-        public static void SetUp(String UserName, String Password)
+        public static void SetUp(String UserName, String Password, String Body)
         {
             try
             {
