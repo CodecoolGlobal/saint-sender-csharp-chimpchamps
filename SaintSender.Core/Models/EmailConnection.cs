@@ -15,7 +15,7 @@ namespace SaintSender.Core.Models
         static string Subject = "Test mail";
         //static string Body = "Login teszt";
         static string Destination = "charly.lombardy@gmail.com";
-        public static void SetUp(String UserName, String Password, String Body)
+        public static bool SetUp(String UserName, String Password, String Body)
         {
             try
             {
@@ -25,18 +25,21 @@ namespace SaintSender.Core.Models
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     client.UseDefaultCredentials = false;
                     client.Credentials = new NetworkCredential(UserName, Password);
-                    MailMessage msgObj = new MailMessage();
-                    msgObj.To.Add(Destination);
-                    msgObj.From = new MailAddress(UserName);
-                    msgObj.Subject = Subject;
-                    msgObj.Body = Body;
-                    client.Send(msgObj);
+
+                    //MailMessage msgObj = new MailMessage();
+                    //msgObj.To.Add(Destination);
+                    //msgObj.From = new MailAddress(UserName);
+                    //msgObj.Subject = Subject;
+                    //msgObj.Body = Body;
+                    //client.Send(msgObj);
                 }
             }
             catch
             {
-
+                return false;
             }
+
+            return true;
         }
     }
 }

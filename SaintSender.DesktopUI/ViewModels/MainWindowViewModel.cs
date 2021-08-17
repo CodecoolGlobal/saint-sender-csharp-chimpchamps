@@ -63,12 +63,9 @@ namespace SaintSender.DesktopUI.ViewModels
         /// <summary>
         /// Call a vendor service and apply its value into <see cref="Greeting"/> property.
         /// </summary>
-        public void Login()
+        public bool Login()
         {
-            Core.Models.EmailConnection.SetUp(this.UserName, this.Password, this.Body);
-      
-
-            
+            return Core.Models.EmailConnection.SetUp(this.UserName, this.Password, this.Body); 
         }
 
 

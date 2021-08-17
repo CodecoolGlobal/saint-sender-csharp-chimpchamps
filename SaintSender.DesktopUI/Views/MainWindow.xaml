@@ -9,6 +9,7 @@
         Height="450"
         Width="800">
     <StackPanel>
+        <TextBox x:Name="LoginStateMessage" Visibility="Collapsed" Text="Invalid e-mail address/password"/>
         <Grid x:Name="LoginGrid">
             <TextBox Text="{Binding UserName}"
                  ToolTip="Please enter your GMAIL e-mail adress!"
