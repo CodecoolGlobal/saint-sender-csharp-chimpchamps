@@ -20,7 +20,7 @@ namespace SaintSender.Core.Models
             IC = new ImapClient("imap.gmail.com", Username, Password, AuthMethods.Login, 993, true);
             IC.SelectMailbox("INBOX");
             //var Email = IC.GetMessage(IC.GetMessageCount() - 1);
-            var Emails = IC.GetMessages(IC.GetMessageCount() -5, IC.GetMessageCount() +1, false).ToList();
+            var Emails = IC.GetMessages(IC.GetMessageCount() -5, IC.GetMessageCount(), false).ToList();
             Emails.Reverse();
             foreach (var Email in Emails)
             {
