@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using AE.Net.Mail;
 
 namespace SaintSender.Core.Models
 {
@@ -40,7 +41,7 @@ namespace SaintSender.Core.Models
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     client.UseDefaultCredentials = false;
                     client.Credentials = new NetworkCredential(Username, Password);
-                    MailMessage msgObj = new MailMessage();
+                    System.Net.Mail.MailMessage msgObj = new System.Net.Mail.MailMessage();
                     msgObj.To.Add(Destination);
                     msgObj.From = new MailAddress(Username);
                     msgObj.Subject = Subject;

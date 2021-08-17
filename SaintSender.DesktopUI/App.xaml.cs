@@ -17,5 +17,10 @@ namespace SaintSender.DesktopUI
         {
             SaintSender.Core.Models.EmailConnection.SetUp();
         }
+
+        public void ListEmails()
+        {
+            SaintSender.Core.Models.Inbox.ListMails();
+        }
     }
 }

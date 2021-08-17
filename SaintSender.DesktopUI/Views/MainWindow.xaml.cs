@@ -22,6 +22,7 @@ namespace SaintSender.DesktopUI
         {
             // dispatch user interaction to view model
             _vm.Greet();
+            SaintSender.Core.Models.Inbox.ListMails();
         }
     }
 }
