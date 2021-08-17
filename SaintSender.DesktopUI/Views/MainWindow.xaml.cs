@@ -18,10 +18,12 @@ namespace SaintSender.DesktopUI
             InitializeComponent();
         }
 
-        private void GreetBtn_Click(object sender, RoutedEventArgs e)
+
+        private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
-            // dispatch user interaction to view model
-            _vm.Greet();
+            LoginGrid.Visibility = Visibility.Collapsed;
+            ContentGrid.Visibility = Visibility.Visible;
+            _vm.Login();
         }
     }
 }
