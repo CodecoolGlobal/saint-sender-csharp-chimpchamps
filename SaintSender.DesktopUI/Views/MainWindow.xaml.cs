@@ -18,10 +18,24 @@ namespace SaintSender.DesktopUI
             InitializeComponent();
         }
 
-        private void GreetBtn_Click(object sender, RoutedEventArgs e)
+
+        private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
-            // dispatch user interaction to view model
-            _vm.Greet();
+            if (_vm.Login())
+            {
+                LoginStateMessage.Visibility = Visibility.Collapsed;
+                LoginGrid.Visibility = Visibility.Collapsed;
+                ContentGrid.Visibility = Visibility.Visible;
+            } else
+            {
+                LoginStateMessage.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Logout_Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginGrid.Visibility = Visibility.Visible;
+            ContentGrid.Visibility = Visibility.Collapsed;
         }
     }
 }
