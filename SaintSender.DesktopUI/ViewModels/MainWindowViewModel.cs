@@ -1,5 +1,6 @@
 ﻿using AE.Net.Mail;
 using SaintSender.Core.Interfaces;
+using SaintSender.Core.Models;
 using SaintSender.Core.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace SaintSender.DesktopUI.ViewModels
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-      
+
         public string UserName
         {
             get { return _userName; }
@@ -53,10 +54,10 @@ namespace SaintSender.DesktopUI.ViewModels
             }
         }
 
-        public void MailList()
+        public void MailList(string UserName, string Password)
         {
             this.Mails.Clear();
-            foreach (var mail in Core.Models.Inbox.ListMails())
+            foreach (var mail in Inbox.ListMails(UserName, Password))
             {
                 this.Mails.Add(mail);
             }
@@ -77,8 +78,17 @@ namespace SaintSender.DesktopUI.ViewModels
         /// </summary>
         public bool Login()
         {
-            MailList();
-            return Core.Models.EmailConnection.SetUp(this.UserName, this.Password); 
+
+            MailList(this.UserName, this.Password);
+            if (Inbox.IsAuthenticated)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+        }
         }
 
         public void LogOut()

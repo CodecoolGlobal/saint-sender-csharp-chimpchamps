@@ -1,4 +1,5 @@
-﻿using SaintSender.DesktopUI.ViewModels;
+﻿using SaintSender.Core.Models;
+using SaintSender.DesktopUI.ViewModels;
 using SaintSender.DesktopUI.Views;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace SaintSender.DesktopUI
         }
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
-            _vm.MailList();
+            _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword);
         }
 
 
@@ -32,10 +33,11 @@ namespace SaintSender.DesktopUI
                 LoginStateMessage.Visibility = Visibility.Collapsed;
                 LoginGrid.Visibility = Visibility.Collapsed;
                 ContentGrid.Visibility = Visibility.Visible;
-                //Core.Models.Inbox.ListMails();
             } else
             {
                 LoginStateMessage.Visibility = Visibility.Visible;
+                LoginGrid.Visibility = Visibility.Visible;
+
             }
         }
 

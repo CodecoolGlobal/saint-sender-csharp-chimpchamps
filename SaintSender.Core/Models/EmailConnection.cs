@@ -19,29 +19,9 @@ namespace SaintSender.Core.Models
 
         public static string SessionUserName{ get; set; }
         public static string SessionPassword{ get; set; }
-        public static bool SetUp(string UserName, string Password)
-        {
-            try
-            {
-                using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587))
-                {
-                    client.EnableSsl = true;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(UserName, Password);
-                    SessionUserName = UserName;
-                    SessionPassword = Password;
-                }
-            }
-            catch
-            {
-                return false;
-            }
 
-            return true;
-        }
 
-        public static void SendMail(String Destination, String Subject, String Body)
+        public static void SendMail(string Destination, string Subject, string Body)
         {
             try
             {
