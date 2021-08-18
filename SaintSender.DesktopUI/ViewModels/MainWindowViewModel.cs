@@ -81,6 +81,11 @@ namespace SaintSender.DesktopUI.ViewModels
             return Core.Models.EmailConnection.SetUp(this.UserName, this.Password); 
         }
 
+        public void LogOut()
+        {
+            Core.Models.EmailConnection.LogOut();
+        }
+
 
     }
 }
