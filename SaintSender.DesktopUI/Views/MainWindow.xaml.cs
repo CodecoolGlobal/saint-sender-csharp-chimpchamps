@@ -41,7 +41,7 @@ namespace SaintSender.DesktopUI
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            _vm.LogOut();
             LoginGrid.Visibility = Visibility.Visible;
             ContentGrid.Visibility = Visibility.Collapsed;
 

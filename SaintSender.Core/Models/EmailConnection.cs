@@ -19,7 +19,7 @@ namespace SaintSender.Core.Models
 
         public static string SessionUserName{ get; set; }
         public static string SessionPassword{ get; set; }
-        public static bool SetUp(String UserName, String Password)
+        public static bool SetUp(string UserName, string Password)
         {
             try
             {
@@ -63,6 +63,11 @@ namespace SaintSender.Core.Models
             catch
             {  
             }
+        }
+        public static void LogOut()
+        {
+            SessionUserName = string.Empty;
+            SessionPassword = string.Empty;
         }
     }
 }

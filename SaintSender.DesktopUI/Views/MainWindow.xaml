@@ -7,7 +7,7 @@
         xmlns:viewmodels="clr-namespace:SaintSender.DesktopUI.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="SaintSender"
+        Title="Monkey Mail"
         Height="450"
         Width="800">
     <StackPanel>
@@ -20,7 +20,7 @@
                  Margin="10,10,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
-                 Width="120" />
+                 Width="200" />
             <TextBox Text="{Binding Password}"
                  ToolTip="Enter your password!"
                  HorizontalAlignment="Left"
@@ -28,7 +28,7 @@
                  Margin="10,45,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
-                 Width="120" />
+                 Width="200" />
             <Button Content="Login"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
