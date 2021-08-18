@@ -61,7 +61,7 @@ namespace SaintSender.Core.Models
                 }
             }
             catch
-            {  
+            {
             }
         }
     }
