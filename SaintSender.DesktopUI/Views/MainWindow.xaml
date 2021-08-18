@@ -43,13 +43,11 @@
                 Click="Login_Button_Click" />
         </Grid>
         <Grid x:Name="ContentGrid" Margin="0,0,-0.4,0" Visibility="Collapsed">
-            <ListView ItemsSource="{Binding Path=MailList}">
+            <ListView ItemsSource="{Binding Path=Mails}" Margin="18,10,0.4,-10">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="WHU" DisplayMemberBinding="{Binding Path=MessageID}">
-                        </GridViewColumn>
-                        <GridViewColumn Header="WAT" DisplayMemberBinding="{Binding Path=Subject}">
-                        </GridViewColumn>
+                        <GridViewColumn Header="WHU" DisplayMemberBinding="{Binding Path=From}"/>
+                        <GridViewColumn Header="WAT" DisplayMemberBinding="{Binding Path=Subject}"/>
                     </GridView>
                 </ListView.View>                
             </ListView>
@@ -57,7 +55,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
-                Margin="140,13,0,0"
+                Margin="18,164,0,-97"
                 Click="Logout_Button_Click" />
         </Grid>
     </StackPanel>
