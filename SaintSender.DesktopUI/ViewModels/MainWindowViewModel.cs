@@ -16,7 +16,7 @@ namespace SaintSender.DesktopUI.ViewModels
         private string _userName;
         private string _password;
         private string _body;
-        private ObservableCollection<MailMessage> _mails;
+        public ObservableCollection<MailMessage> Mails { get; set; }
 
         /// <summary>
         /// Whenever a property value changed the subscribed event handler is called.
@@ -53,10 +53,13 @@ namespace SaintSender.DesktopUI.ViewModels
             }
         }
 
-        public ObservableCollection<MailMessage> MailList
+        public void MailList()
         {
-            get { return _mails; }
-            set { _mails = value; }
+            this.Mails.Clear();
+            foreach (var mail in Core.Models.Inbox.ListMails())
+            {
+                this.Mails.Add(mail);
+            }
         }
 
 
@@ -66,6 +69,7 @@ namespace SaintSender.DesktopUI.ViewModels
             UserName = string.Empty;
             Password = string.Empty;
             Body = string.Empty;
+            Mails = new ObservableCollection<MailMessage>();
         }
 
         /// <summary>
@@ -73,7 +77,7 @@ namespace SaintSender.DesktopUI.ViewModels
         /// </summary>
         public bool Login()
         {
-            MailList = Core.Models.Inbox.ListMails();
+            MailList();
             return Core.Models.EmailConnection.SetUp(this.UserName, this.Password); 
         }
 

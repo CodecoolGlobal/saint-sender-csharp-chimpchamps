@@ -19,6 +19,10 @@ namespace SaintSender.DesktopUI
             DataContext = _vm;
             InitializeComponent();
         }
+        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.MailList();
+        }
 
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
