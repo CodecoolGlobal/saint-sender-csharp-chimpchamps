@@ -1,0 +1,44 @@
+﻿<Window x:Class="SaintSender.DesktopUI.Views.SendEmail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
+        xmlns:viewmodels="clr-namespace:SaintSender.DesktopUI.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:SendEmailViewModel}"
+        mc:Ignorable="d"
+        Title="SendEmail" Height="450" Width="800">
+    <Grid>
+        <Label Margin="10,10,0,0">Address</Label>
+        <TextBox Text="{Binding Destination}"
+                 ToolTip="Enter body of e-mail"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="10,35,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="317" />
+        <Label  Margin="10,70,0,0">Subject</Label>
+        <TextBox Text="{Binding Subject}"
+                 ToolTip="Enter body of e-mail"
+                 HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="10,95,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="317" />
+        <Label  Margin="10,130,0,0">Message</Label>
+        <TextBox Text="{Binding Body}"
+                 ToolTip="Enter body of e-mail"
+                 HorizontalAlignment="Left"
+                 Height="106"
+                 Margin="10,155,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="317" />
+        <Button Content="Send" Margin="10,285,672.6,112" Width="75" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Click="Send_Button_Click"/>
+        <Button Content="Cancel" Margin="155,285,527.6,112" Width="75" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Click="Cancel_Button_Click"/>
+    </Grid>
+</Window>

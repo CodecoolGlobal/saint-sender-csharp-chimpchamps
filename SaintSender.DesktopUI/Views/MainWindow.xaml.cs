@@ -1,5 +1,7 @@
 ﻿using SaintSender.DesktopUI.ViewModels;
+using SaintSender.DesktopUI.Views;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace SaintSender.DesktopUI
 {
@@ -43,6 +45,12 @@ namespace SaintSender.DesktopUI
             LoginGrid.Visibility = Visibility.Visible;
             ContentGrid.Visibility = Visibility.Collapsed;
 
+        }
+
+        private void New_Mail_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SendEmail sendEmail = new SendEmail();
+            sendEmail.Show();
         }
     }
 }

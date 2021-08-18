@@ -77,9 +77,8 @@ namespace SaintSender.DesktopUI.ViewModels
         /// </summary>
         public bool Login()
         {
-            //MailList = Core.Models.Inbox.ListMails();
             MailList();
-            return Core.Models.EmailConnection.SetUp(this.UserName, this.Password, this.Body); 
+            return Core.Models.EmailConnection.SetUp(this.UserName, this.Password); 
         }
 
 
