@@ -37,6 +37,6 @@
         <Button Content="Send" Margin="10,285,672.6,112" Width="75" HorizontalAlignment="Left"
                 VerticalAlignment="Top"/>
         <Button Content="Cancel" Margin="155,285,527.6,112" Width="75" HorizontalAlignment="Left"
-                VerticalAlignment="Top"/>
+                VerticalAlignment="Top" Click="Cancel_Button_Click"/>
     </Grid>
 </Window>
