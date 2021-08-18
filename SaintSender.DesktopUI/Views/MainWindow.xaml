@@ -27,19 +27,11 @@
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="120" />
-            <TextBox Text="{Binding Body}"
-                 ToolTip="Enter body of e-mail"
-                 HorizontalAlignment="Left"
-                 Height="23"
-                 Margin="10,80,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="120" />
             <Button Content="Login"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
-                Margin="140,13,0,0"
+                Margin="55,83,0,-34"
                 Click="Login_Button_Click" />
         </Grid>
         <Grid x:Name="ContentGrid" Margin="0,0,-0.4,0" Visibility="Collapsed">
@@ -59,6 +51,12 @@
                 Width="75"
                 Margin="140,13,0,0"
                 Click="Logout_Button_Click" />
+            <Button Content="New mail"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="75"
+                Margin="140,120,0,0" Click="New_Mail_Button_Click"
+                />
         </Grid>
     </StackPanel>
 </Window>
