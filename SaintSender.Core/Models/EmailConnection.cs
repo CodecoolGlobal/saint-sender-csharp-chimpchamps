@@ -16,7 +16,10 @@ namespace SaintSender.Core.Models
         //static string Subject = "Test mail";
         //static string Body = "Login teszt";
         //static string Destination = "charly.lombardy@gmail.com";
-        public static bool SetUp(String UserName, String Password, String Body)
+
+        public static string SessionUserName{ get; set; }
+        public static string SessionPassword{ get; set; }
+        public static bool SetUp(String UserName, String Password)
         {
             try
             {
@@ -25,7 +28,9 @@ namespace SaintSender.Core.Models
                     client.EnableSsl = true;
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(UserName, "bkhscuykgdupwiuh");
+                    client.Credentials = new NetworkCredential(UserName, Password);
+                    SessionUserName = UserName;
+                    SessionPassword = Password;
                 }
             }
             catch
@@ -36,7 +41,7 @@ namespace SaintSender.Core.Models
             return true;
         }
 
-        public static void SendMail(String UserName, String Password, String Destination, String Subject, String Body)
+        public static void SendMail(String Destination, String Subject, String Body)
         {
             try
             {
@@ -45,11 +50,11 @@ namespace SaintSender.Core.Models
                     client.EnableSsl = true;
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(UserName, Password);
+                    client.Credentials = new NetworkCredential(SessionUserName, SessionPassword);
 
                     System.Net.Mail.MailMessage msgObj = new System.Net.Mail.MailMessage();
                     msgObj.To.Add(Destination);
-                    msgObj.From = new MailAddress(UserName);
+                    msgObj.From = new MailAddress(SessionUserName);
                     msgObj.Subject = Subject;
                     msgObj.Body = Body;
                     client.Send(msgObj);
