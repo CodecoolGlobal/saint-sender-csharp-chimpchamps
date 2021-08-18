@@ -55,15 +55,15 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
-                Margin="720,10,0,0" Click="New_Mail_Button_Click"
-                Tag="{Binding UserName}"
+                Margin="630,10,0,0" Click="New_Mail_Button_Click"
+                Height="25"
                 />
             <Button Content="Refresh"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
-                Margin="805,10,0,0"
-                Click="Refresh_Button_Click" RenderTransformOrigin="1.8,3.3" Height="21" />
+                Margin="710,10,0,0"
+                Click="Refresh_Button_Click" Height="25" />
         </Grid>
     </StackPanel>
 </Window>
