@@ -4,11 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
+        xmlns:viewmodels="clr-namespace:SaintSender.DesktopUI.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:SendEmailViewModel}"
         mc:Ignorable="d"
         Title="SendEmail" Height="450" Width="800">
     <Grid>
         <Label Margin="10,10,0,0">Address</Label>
-        <TextBox Text="{Binding Body}"
+        <TextBox Text="{Binding Destination}"
                  ToolTip="Enter body of e-mail"
                  HorizontalAlignment="Left"
                  Height="25"
@@ -17,7 +19,7 @@
                  VerticalAlignment="Top"
                  Width="317" />
         <Label  Margin="10,70,0,0">Subject</Label>
-        <TextBox Text="{Binding Body}"
+        <TextBox Text="{Binding Subject}"
                  ToolTip="Enter body of e-mail"
                  HorizontalAlignment="Left"
                  Height="25"
@@ -35,7 +37,7 @@
                  VerticalAlignment="Top"
                  Width="317" />
         <Button Content="Send" Margin="10,285,672.6,112" Width="75" HorizontalAlignment="Left"
-                VerticalAlignment="Top"/>
+                VerticalAlignment="Top" Click="Send_Button_Click"/>
         <Button Content="Cancel" Margin="155,285,527.6,112" Width="75" HorizontalAlignment="Left"
                 VerticalAlignment="Top" Click="Cancel_Button_Click"/>
     </Grid>

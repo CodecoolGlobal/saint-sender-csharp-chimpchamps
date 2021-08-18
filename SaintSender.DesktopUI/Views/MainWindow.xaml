@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SaintSender.DesktopUI" xmlns:viewmodels="clr-namespace:SaintSender.DesktopUI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+        xmlns:local="clr-namespace:SaintSender.DesktopUI"
+        xmlns:viewmodels="clr-namespace:SaintSender.DesktopUI.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="SaintSender"
         Height="450"
@@ -43,7 +45,7 @@
                         <GridViewColumn Header="WAT" DisplayMemberBinding="{Binding Path=Subject}">
                         </GridViewColumn>
                     </GridView>
-                </ListView.View>                
+                </ListView.View>
             </ListView>
             <Button Content="Logout"
                 HorizontalAlignment="Left"
@@ -56,6 +58,7 @@
                 VerticalAlignment="Top"
                 Width="75"
                 Margin="140,120,0,0" Click="New_Mail_Button_Click"
+                Tag="{Binding UserName}"
                 />
         </Grid>
     </StackPanel>
