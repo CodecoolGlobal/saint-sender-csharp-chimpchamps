@@ -8,8 +8,8 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="Monkey Mail"
-        Height="450"
-        Width="800">
+        Height="650"
+        Width="1000">
     <StackPanel>
         <TextBox x:Name="LoginStateMessage" Visibility="Collapsed" Text="Invalid e-mail address/password"/>
         <Grid x:Name="LoginGrid">
@@ -36,12 +36,14 @@
                 Margin="55,83,0,-34"
                 Click="Login_Button_Click" />
         </Grid>
-        <Grid x:Name="ContentGrid" Margin="0,0,-0.4,0" Visibility="Collapsed">
+        <Grid x:Name="ContentGrid" Margin="0,0,18,0" Visibility="Collapsed">
             <ListView ItemsSource="{Binding Path=Mails}" Margin="18,10,0.4,-10">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="WHU" DisplayMemberBinding="{Binding Path=From}"/>
                         <GridViewColumn Header="WAT" DisplayMemberBinding="{Binding Path=Subject}"/>
+                        <GridViewColumn Header="WEN" DisplayMemberBinding="{Binding Path=Date}"/>
+                        <GridViewColumn Header="HAZ CN" DisplayMemberBinding="{Binding Path=Flags}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -49,21 +51,35 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
-                Margin="18,164,0,-97"
-                Click="Logout_Button_Click" />
+                Margin="868,580,0,-453.8"
+                Click="Logout_Button_Click" Height="21" />
             <Button Content="New mail"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
-                Margin="630,10,0,0" Click="New_Mail_Button_Click"
-                Height="25"
+                Margin="695,580,0,-453.8" Click="New_Mail_Button_Click"
+                Height="21"
                 />
             <Button Content="Refresh"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="75"
-                Margin="710,10,0,0"
-                Click="Refresh_Button_Click" Height="25" />
+                Margin="782,580,0,-453.8"
+                Click="Refresh_Button_Click" Height="21" />
+            <Button Content="Next"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="124,580,0,-453.8"
+                    Width="75"  
+                    Height="21"
+                    Click="Next_Button_Click"/>
+            <Button Content="Prev"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Width="75"  
+                    Margin="35,580,0,-453.8" 
+                    Height="21"
+                    Click="Prev_Button_Click"/>
         </Grid>
     </StackPanel>
 </Window>

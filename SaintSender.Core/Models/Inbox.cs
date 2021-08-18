@@ -23,7 +23,7 @@ namespace SaintSender.Core.Models
                     EmailConnection.SessionUserName = UserName;
                     EmailConnection.SessionPassword = Password;
                     IC.SelectMailbox("INBOX");
-                    var Emails = IC.GetMessages(IC.GetMessageCount() - 5, IC.GetMessageCount(), false).ToList();
+                    var Emails = IC.GetMessages(IC.GetMessageCount() - 25, IC.GetMessageCount(), false).ToList();
                     Emails.Reverse();
                     MailList.Clear();
                     foreach (var Email in Emails)

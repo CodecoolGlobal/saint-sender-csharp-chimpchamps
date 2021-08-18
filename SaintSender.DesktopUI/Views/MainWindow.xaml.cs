@@ -25,6 +25,16 @@ namespace SaintSender.DesktopUI
             _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword);
         }
 
+        private void Prev_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword);
+        }
+
+        private void Next_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword);
+        }
+
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
