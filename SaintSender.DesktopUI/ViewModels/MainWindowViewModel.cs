@@ -54,10 +54,10 @@ namespace SaintSender.DesktopUI.ViewModels
             }
         }
 
-        public void MailList(string UserName, string Password)
+        public void MailList(string UserName, string Password, int page)
         {
             this.Mails.Clear();
-            foreach (var mail in Inbox.ListMails(UserName, Password))
+            foreach (var mail in Inbox.ListMails(UserName, Password, page))
             {
                 this.Mails.Add(mail);
             }
@@ -79,7 +79,7 @@ namespace SaintSender.DesktopUI.ViewModels
         public bool Login()
         {
 
-            MailList(this.UserName, this.Password);
+            MailList(this.UserName, this.Password, 0);
             if (Inbox.IsAuthenticated)
             {
                 return true;

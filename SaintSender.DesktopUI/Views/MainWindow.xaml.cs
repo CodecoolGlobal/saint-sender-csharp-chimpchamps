@@ -12,6 +12,7 @@ namespace SaintSender.DesktopUI
     public partial class MainWindow : Window
     {
         private MainWindowViewModel _vm;
+        public int page = 0;
 
         public MainWindow()
         {
@@ -22,7 +23,19 @@ namespace SaintSender.DesktopUI
         }
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
-            _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword);
+            _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword, page);
+        }
+
+        private void Prev_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword, page);
+            page -= 1;
+        }
+
+        private void Next_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.MailList(EmailConnection.SessionUserName, EmailConnection.SessionPassword, page);
+            page += 1;
         }
 
 
