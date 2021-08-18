@@ -91,6 +91,11 @@ namespace SaintSender.DesktopUI.ViewModels
         }
         }
 
+        public void LogOut()
+        {
+            Core.Models.EmailConnection.LogOut();
+        }
+
 
     }
 }
