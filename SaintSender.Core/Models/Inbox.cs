@@ -11,25 +11,32 @@ namespace SaintSender.Core.Models
     public class Inbox
     {
         static ImapClient IC;
-        static string Username = "charly.lombardy@gmail.com";
-        static string Password = "bkhscuykgdupwiuh";
         public static ObservableCollection<MailMessage> MailList = new ObservableCollection<MailMessage>();
+        public static bool IsAuthenticated { get; set; }
 
-        public static ObservableCollection<MailMessage> ListMails()
+        public static ObservableCollection<MailMessage> ListMails(string UserName, string Password)
         {
-
-            IC = new ImapClient("imap.gmail.com", Username, Password, AuthMethods.Login, 993, true);
-            IC.SelectMailbox("INBOX");
-            //var Email = IC.GetMessage(IC.GetMessageCount() - 1);
-            var Emails = IC.GetMessages(IC.GetMessageCount() -5, IC.GetMessageCount(), false).ToList();
-            Emails.Reverse();
-                MailList.Clear();
-            foreach (var Email in Emails)
+            try
             {
-                MailList.Add(Email);
+                using (IC = new ImapClient("imap.gmail.com", UserName, Password, AuthMethods.Login, 993, true))
+                {
+                    EmailConnection.SessionUserName = UserName;
+                    EmailConnection.SessionPassword = Password;
+                    IC.SelectMailbox("INBOX");
+                    var Emails = IC.GetMessages(IC.GetMessageCount() - 5, IC.GetMessageCount(), false).ToList();
+                    Emails.Reverse();
+                    MailList.Clear();
+                    foreach (var Email in Emails)
+                    {
+                        MailList.Add(Email);
+                    }
+                    IsAuthenticated = true;
+                }
             }
-            //IC.DeleteMessage(Email);
-            //Console.ReadLine();
+            catch (Exception)
+            {
+                IsAuthenticated = false;
+            }
             return MailList;
         }
     }
