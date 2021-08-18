@@ -13,24 +13,44 @@ namespace SaintSender.Core.Models
         static ImapClient IC;
         public static ObservableCollection<MailMessage> MailList = new ObservableCollection<MailMessage>();
         public static bool IsAuthenticated { get; set; }
+        public static int PageLength = 5;
+        public static int ActualPage = 0;
 
-        public static ObservableCollection<MailMessage> ListMails(string UserName, string Password)
+
+        public static ObservableCollection<MailMessage> ListMails(string UserName, string Password, int page)
         {
             try
             {
                 using (IC = new ImapClient("imap.gmail.com", UserName, Password, AuthMethods.Login, 993, true))
                 {
+                    var MessageCount = IC.GetMessageCount();
                     EmailConnection.SessionUserName = UserName;
                     EmailConnection.SessionPassword = Password;
-                    IC.SelectMailbox("INBOX");
-                    var Emails = IC.GetMessages(IC.GetMessageCount() - 25, IC.GetMessageCount(), false).ToList();
-                    Emails.Reverse();
-                    MailList.Clear();
-                    foreach (var Email in Emails)
+                    if (MessageCount > PageLength * page & ActualPage + page >= 0)
                     {
-                        MailList.Add(Email);
+                        IC.SelectMailbox("INBOX");
+                        var Emails = IC.GetMessages(IC.GetMessageCount() - (PageLength + (PageLength * page)), IC.GetMessageCount() - (PageLength * page), false).ToList();
+                        Emails.Reverse();
+                        ActualPage = page;
+                        MailList.Clear();
+                        foreach (var Email in Emails)
+                        {
+                            MailList.Add(Email);
+                        }
+                        IsAuthenticated = true;
                     }
-                    IsAuthenticated = true;
+                    else
+                    {
+                        IC.SelectMailbox("INBOX");
+                        var Emails = IC.GetMessages(IC.GetMessageCount() - (PageLength + (PageLength * ActualPage)), IC.GetMessageCount() - (PageLength * ActualPage), false).ToList();
+                        Emails.Reverse();
+                        MailList.Clear();
+                        foreach (var Email in Emails)
+                        {
+                            MailList.Add(Email);
+                        }
+                        IsAuthenticated = true;
+                    }
                 }
             }
             catch (Exception)
