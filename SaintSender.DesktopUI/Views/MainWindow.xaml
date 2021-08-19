@@ -29,6 +29,7 @@
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="200" />
+            <TextBlock Text="{Binding UserName}" Margin="275,15,-275.4,-15"></TextBlock>
             <Button Content="Login"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"

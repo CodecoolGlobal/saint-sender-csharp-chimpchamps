@@ -10,7 +10,7 @@ namespace SaintSender.Core.Models
 {
     public class Inbox
     {
-        static ImapClient IC;
+        //static ImapClient IC;
         public static ObservableCollection<MailMessage> MailList = new ObservableCollection<MailMessage>();
         public static bool IsAuthenticated { get; set; }
         public static int PageLength = 5;
@@ -21,7 +21,7 @@ namespace SaintSender.Core.Models
         {
             try
             {
-                using (IC = new ImapClient("imap.gmail.com", UserName, Password, AuthMethods.Login, 993, true))
+                using (var IC = new ImapClient("imap.gmail.com", UserName, Password, AuthMethods.Login, 993, true))
                 {
                     var MessageCount = IC.GetMessageCount();
                     EmailConnection.SessionUserName = UserName;

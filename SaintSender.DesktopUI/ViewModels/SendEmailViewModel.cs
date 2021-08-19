@@ -78,7 +78,6 @@ namespace SaintSender.DesktopUI.ViewModels
 
         public void SendMail()
         {
-
             Core.Models.EmailConnection.SendMail(this.Destination, this.Subject, this.Body);
         }
     }

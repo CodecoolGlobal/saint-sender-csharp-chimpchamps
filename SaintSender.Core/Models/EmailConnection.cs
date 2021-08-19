@@ -20,7 +20,6 @@ namespace SaintSender.Core.Models
         public static string SessionUserName{ get; set; }
         public static string SessionPassword{ get; set; }
 
-
         public static void SendMail(string Destination, string Subject, string Body)
         {
             try

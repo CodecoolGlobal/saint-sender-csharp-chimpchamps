@@ -1,10 +1,7 @@
 ﻿using AE.Net.Mail;
-using SaintSender.Core.Interfaces;
 using SaintSender.Core.Models;
-using SaintSender.Core.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows;
 
 namespace SaintSender.DesktopUI.ViewModels
 {
@@ -23,7 +20,6 @@ namespace SaintSender.DesktopUI.ViewModels
         /// Whenever a property value changed the subscribed event handler is called.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         public string UserName
         {
